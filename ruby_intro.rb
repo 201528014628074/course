@@ -27,19 +27,8 @@ end
 def sum_to_n? arr, n
   # YOUR CODE HERE
   	arr_length = arr.length
-  	if arr_length==0
-  		if n==0
-  			return true
-  		else
-  			return false
-  		end
-  	end
-  	if arr_length==1
-  		if n==arr[0]
-			return true
-		else
-			return false
-		end  		
+  	if arr_length==0 or arr_length==1
+  		return false
   	end
   	first=0
   	begin
@@ -100,11 +89,29 @@ end
 class BookInStock
 # YOUR CODE HERE
         def initialize (isbn, price)
-                if isbn.empty? or price < 0
+                if isbn.empty? or price <= 0
                         raise ArgumentError, 'the argument is not propert'
                 end
                 @isbn = isbn
                 @price = price
+        end
+        def isbn= (isbn)
+                if isbn.empty?
+                        raise ArgumentError, 'the argument is not propert'
+                end
+                @isbn = isbn
+        end
+        def price= (price)
+                if price <= 0
+                        raise ArgumentError, 'the argument is not propert' 
+                end
+                @price = price   
+        end
+        def isbn
+                return @isbn
+        end
+        def price
+          	return @price
         end
         def price_as_string
                 price_string = @price.to_s
